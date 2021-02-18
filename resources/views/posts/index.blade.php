@@ -1,7 +1,7 @@
-{{--@extends('layouts.app')--}}
+@extends('layouts.app')
 
-{{--@section('main')--}}
+@section('main')
     @foreach($posts as $post)
     {{$post->title}}<br>
     @endforeach
-{{--@endsection--}}
+@endsection
