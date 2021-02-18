@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -112,15 +113,12 @@
                 </header>
 
                 <main class="flex-1 overflow-x-hidden overflow-y-auto">
-                    <div class="container mx-auto px-6 py-8">
-                        <div
-                            class="grid h-96 text-gray-500 dark:text-gray-300">
+
 
 
                             @yield('main')
 
-                        </div>
-                    </div>
+
                 </main>
             </div>
         </div>
