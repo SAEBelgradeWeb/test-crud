@@ -31,7 +31,8 @@
 
                     <form action="/posts/{{$post->id}}" method="POST">
                         @csrf
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="/posts/{{$post->id}}" class="btn btn-primary">Show</a>
+                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
                         <input type="hidden" name="_method" value="delete">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>

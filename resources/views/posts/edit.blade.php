@@ -5,12 +5,13 @@
         <div class="row">
             <div class="col-12">
 
-                <form action="/posts" method="post">
+                <form action="/posts/{{$post->id}}" method="post">
+                    <input type="hidden" name="_method" value="put">
                     @csrf
 
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}">
+                        <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
                     </div>
                     <div class="text-danger">
                         <ul>
@@ -22,8 +23,8 @@
 
                     <div class="form-group">
                         <label for="body">Body</label>
-                        <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{old('body')
-                        }}</textarea>
+                        <textarea name="body" id="body" cols="30" rows="10"
+                                  class="form-control">{{$post->body}}</textarea>
                     </div>
 
                     <div class="text-danger">
@@ -38,7 +39,11 @@
                         <label for="category_id">Category</label>
                         <select name="category_id" id="category_id" class="form-control">
                             @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->title}}</option>
+
+                                <option value="{{$category->id}}"
+                                        @if($category->id === $post->category_id) selected @endif>
+                                    {{$category->title}}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -48,7 +53,9 @@
                         <label for="user_id">Author</label>
                         <select name="user_id" id="user_id" class="form-control">
                             @foreach($users as $user)
-                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                <option value="{{$user->id}}"
+                                        @if($user->id === $post->user_id) selected @endif
+                                >{{$user->name}}</option>
                             @endforeach
                         </select>
                     </div>

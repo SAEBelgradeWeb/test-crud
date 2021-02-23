@@ -17,7 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
-Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create']);
-Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
-Route::delete('/posts/{id}', [\App\Http\Controllers\PostController::class, 'delete']);
+Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->middleware(['auth']);
+Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create'])->middleware(['auth']);
+Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->middleware(['auth']);
+Route::get('/posts/{id}', [\App\Http\Controllers\PostController::class, 'show'])->middleware(['auth']);
+Route::get('/posts/{id}/edit', [\App\Http\Controllers\PostController::class, 'edit'])->middleware(['auth']);
+Route::put('/posts/{id}', [\App\Http\Controllers\PostController::class, 'update'])->middleware(['auth']);
+Route::delete('/posts/{id}', [\App\Http\Controllers\PostController::class, 'delete'])->middleware(['auth']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
