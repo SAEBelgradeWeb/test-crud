@@ -28,8 +28,13 @@
                 <td>{{$post->user->name}}</td>
                 <td>{{$post->category->title}}</td>
                 <td>
-                    <a href="" class="btn btn-primary">Edit</a>
-                    <a href="/posts/delete/{{$post->id}}" class="btn btn-danger">Delete</a>
+
+                    <form action="/posts/{{$post->id}}" method="POST">
+                        @csrf
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

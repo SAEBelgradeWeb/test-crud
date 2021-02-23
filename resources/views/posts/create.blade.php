@@ -4,16 +4,40 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+
+{{--                <div class="text-danger">--}}
+{{--                    <ul>--}}
+{{--                        @foreach ($errors->all() as $error)--}}
+{{--                            <li>{{$error}}</li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
                 <form action="/posts" method="post">
                     @csrf
+
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control">
+                    </div>
+                    <div class="text-danger">
+                        <ul>
+                            @foreach ($errors->get('title') as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
                     </div>
 
                     <div class="form-group">
                         <label for="body">Body</label>
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+
+                    <div class="text-danger">
+                        <ul>
+                            @foreach ($errors->get('body') as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
                     </div>
 
                     <div class="form-group">

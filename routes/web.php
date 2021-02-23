@@ -20,4 +20,4 @@ Route::get('/', function () {
 Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
 Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create']);
 Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
-Route::get('/posts/delete/{id}', [\App\Http\Controllers\PostController::class, 'delete']);
+Route::delete('/posts/{id}', [\App\Http\Controllers\PostController::class, 'delete']);
